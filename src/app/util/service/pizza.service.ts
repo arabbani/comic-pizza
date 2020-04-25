@@ -12,7 +12,6 @@ export class PizzaService {
 
   constructor() { }
 
-
   filterPizza(filter: PizzaFilter): void {
     let filterdPizzaItems = pizzaItems;
     if (filter.price) {
@@ -24,8 +23,8 @@ export class PizzaService {
     if (filter.type) {
       filterdPizzaItems = filterdPizzaItems.filter(pizza => pizza.type === filter.type);
     }
-    if (filter.veg) {
-      filterdPizzaItems = filterdPizzaItems.filter(pizza => pizza.veg === filter.veg);
+    if (filter.dishType) {
+      filterdPizzaItems = filterdPizzaItems.filter(pizza => pizza.dishType === filter.dishType);
     }
     this.filteredPizza$.next(filterdPizzaItems)
   }

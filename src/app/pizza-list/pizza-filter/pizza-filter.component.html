@@ -1,4 +1,9 @@
 <form [formGroup]="pizzaFilterForm">
+    <div class="form-check form-check-inline" *ngFor="let dishType of dishTypes">
+        <input class="form-check-input" type="radio" name="dishType" [id]="dishType" [value]="dishType"
+            formControlName="dishType">
+        <label class="form-check-label" [for]="dishType">{{ dishType }}</label>
+    </div>
     <div class="form-group">
         <label for="price">
             Price : <output for="price" class="ml-2">Rs. {{ pizzaFilterForm.value.price }}</output>

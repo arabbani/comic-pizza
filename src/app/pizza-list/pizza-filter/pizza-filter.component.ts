@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { PizzaFilter } from 'src/app/util/enum';
-import { PizzaBase, PizzaType } from 'src/app/util/pizza';
+import { DishType, PizzaBase, PizzaType } from 'src/app/util/pizza';
 import { PizzaBaseService } from 'src/app/util/service/pizza-base.service';
 import { PizzaTypeService } from 'src/app/util/service/pizza-type.service';
 import { PizzaService } from 'src/app/util/service/pizza.service';
@@ -18,6 +18,7 @@ export class PizzaFilterComponent implements OnInit {
   pizzaTypes$: Observable<PizzaType[]>;
 
   pizzaFilterForm: FormGroup;
+  dishTypes = Object.keys(DishType).map(key => DishType[key]);
 
   constructor(private formBuilder: FormBuilder, private pizzaBaseService: PizzaBaseService, private pizzaTypeService: PizzaTypeService, private pizzaService: PizzaService) { }
 
@@ -29,7 +30,7 @@ export class PizzaFilterComponent implements OnInit {
 
   private initPizzaFilterForm(): void {
     this.pizzaFilterForm = this.formBuilder.group({
-      veg: [''],
+      dishType: [''],
       price: [100],
       base: [''],
       type: ['']

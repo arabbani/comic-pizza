@@ -11,6 +11,11 @@ export enum PizzaType {
     noCheese = 'No cheese'
 }
 
+export enum DishType {
+    veg = 'Veg',
+    nonVeg = 'Non Veg'
+}
+
 export class Pizza {
     constructor(
         public id: number,
@@ -18,7 +23,7 @@ export class Pizza {
         public price: number,
         public base: PizzaBase,
         public type: PizzaType,
-        public veg: boolean,
+        public dishType: DishType,
         public image?: string
     ) { }
 }

@@ -1,8 +1,8 @@
-import { PizzaBase, PizzaType } from './pizza';
+import { PizzaBase, PizzaType, DishType } from './pizza';
 
 export interface PizzaFilter {
     price: number,
     base: PizzaBase,
     type: PizzaType,
-    veg?: boolean
+    dishType: DishType
 }

@@ -1,70 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
-// Sass variables
-
-$color-link: yellow;
-$color-border: grey;
-
-// body {
-//   font-family: Roboto, sans-serif, serif;
-// }
-
-// Component Styles
-
-// .main-header {
-//   width: 100%;
-//   background: red;
-//   padding: 1rem 2rem;
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-
-//   &__brand {
-//     color: green;
-//     font-weight: bold;
-//   }
-
-//   .main-nav__items {
-//     padding: 0;
-//     margin: 0;
-//     display: flex;
-
-//     .main-nav__item {
-//       margin: 0 1.1rem;
-
-//       a {
-//         color: $color-link;
-//       }
-//     }
-//   }
-// }
-
-// .main {
-//   padding: 2rem 3rem;
-// }
-
-// .pizza-list {
-//   width: 80vw;
-//   display: flex;
-//   justify-content: center;
-
-//   .pizza-filter {
-//     margin-right: 2rem;
-//     padding: 1rem;
-//     border: 1px solid $color-border;
-//   }
-// }
-
-
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
 
 .btn {
   padding: .2rem .7rem;
-}
-
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
 }

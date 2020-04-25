@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-10 col-md-8 p-5 mx-auto">
+        <form [formGroup]="billingInfoForm" (submit)="makePayment()">
+            <div class="form-group">
+                <label for="card-number">Card Number</label>
+                <input type="text" class="form-control" id="card-number" formControlName="cardNumber">
+            </div>
+            <div class="form-group">
+                <label for="name">Name On Card</label>
+                <textarea cols="3" class="form-control" id="name" formControlName="nameOnCard"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="text" class="form-control" id="cvv" formControlName="cvv">
+            </div>
+            <div class="d-flex justify-content-between">
+                <span>Rs. {{ cartAmount$ | async }}</span>
+                <button type="submit" class="btn btn-primary">Pay</button>
+            </div>
+        </form>
+    </div>
+</div>

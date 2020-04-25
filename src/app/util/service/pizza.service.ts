@@ -14,10 +14,19 @@ export class PizzaService {
 
 
   filterPizza(filter: PizzaFilter): void {
-    // Filter is not working
-    const filterdPizzaItems = pizzaItems.filter(pizza => {
-      return (filter.price && (pizza.price >= filter.price)) || (filter.base && filter.base === pizza.base) || (filter.type && filter.type === pizza.type) || (filter.veg && filter.veg === pizza.veg);
-    });
+    let filterdPizzaItems = pizzaItems;
+    if (filter.price) {
+      filterdPizzaItems = filterdPizzaItems.filter(pizza => pizza.price >= filter.price);
+    }
+    if (filter.base) {
+      filterdPizzaItems = filterdPizzaItems.filter(pizza => pizza.base === filter.base);
+    }
+    if (filter.type) {
+      filterdPizzaItems = filterdPizzaItems.filter(pizza => pizza.type === filter.type);
+    }
+    if (filter.veg) {
+      filterdPizzaItems = filterdPizzaItems.filter(pizza => pizza.veg === filter.veg);
+    }
     this.filteredPizza$.next(filterdPizzaItems)
   }
 }

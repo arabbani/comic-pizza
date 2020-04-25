@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { CartService } from 'src/app/cart/cart.service';
 import { Pizza } from 'src/app/util/pizza';
 import { PizzaService } from 'src/app/util/service/pizza.service';
@@ -11,13 +10,12 @@ import { PizzaService } from 'src/app/util/service/pizza.service';
 })
 export class FilteredPizzaComponent implements OnInit {
 
-  pizzaItems$: Observable<Pizza[]>;
+  pizzaItems: Pizza[];
 
   constructor(private pizzaService: PizzaService, private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.pizzaItems$ = this.pizzaService.filteredPizza$;
-
+    this.pizzaService.filteredPizza$.subscribe(items => this.pizzaItems = items);
   }
 
   addToCart(pizza: Pizza): void {

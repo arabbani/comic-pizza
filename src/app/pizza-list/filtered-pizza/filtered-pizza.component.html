@@ -1,23 +1,28 @@
-<div class="card" *ngFor="let pizza of pizzaItems$ | async">
-    <div class="card-body">
-        <div>
-            <img [src]="pizza.image">
-        </div>
-        <div>
-            <h5 class="card-title">{{ pizza.name }}</h5>
-            <ul>
-                <li>{{ pizza.base }}</li>
-                <li>{{ pizza.type }}</li>
-                <li>{{ pizza.veg ? 'Veg': 'Non Veg' }}</li>
-            </ul>
-            <div class="d-flex justify-content-between border-top pt-3">
-                <span>Rs. {{ pizza.price }}</span>
-                <button *ngIf="!addedToCart(pizza); else onAddedToCart" type="button" class="btn btn-primary"
-                    (click)="addToCart(pizza)">Add</button>
-                <ng-template #onAddedToCart>
-                    <button type="button" class="btn btn-warning" (click)="removeFromCart(pizza)">Remove</button>
-                </ng-template>
+<ng-container *ngIf="pizzaItems && pizzaItems.length > 0; else noItemsFound">
+    <div class="card" *ngFor="let pizza of pizzaItems">
+        <div class="card-body d-flex align-items-center">
+            <div class="w-25">
+                <img src="./assets/images/{{pizza.image}}" class="img-fluid">
+            </div>
+            <div class="flex-fill ml-2">
+                <h5 class="card-title">{{ pizza.name }}</h5>
+                <ul>
+                    <li>{{ pizza.base }}</li>
+                    <li>{{ pizza.type }}</li>
+                    <li>{{ pizza.veg ? 'Veg': 'Non Veg' }}</li>
+                </ul>
+                <div class="d-flex justify-content-between border-top pt-3">
+                    <span>Rs. {{ pizza.price }}</span>
+                    <button *ngIf="!addedToCart(pizza); else onAddedToCart" type="button" class="btn btn-primary"
+                        (click)="addToCart(pizza)">Add</button>
+                    <ng-template #onAddedToCart>
+                        <button type="button" class="btn btn-warning" (click)="removeFromCart(pizza)">Remove</button>
+                    </ng-template>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</ng-container>
+<ng-template #noItemsFound>
+    <p>No Items Found!!</p>
+</ng-template>

@@ -1,1 +1,24 @@
-<p>cart-list works!</p>
+<div class="row">
+    <div class="col-10 col-md-6 p-5 mx-auto">
+        <div class="card" *ngFor="let cartItem of cartItems$ | async">
+            <div class="card-body">
+                <div>
+                    <img [src]="cartItem.item.image">
+                </div>
+                <div>
+                    <h5 class="card-title">{{ cartItem.item.name }}</h5>
+                    <ul>
+                        <li>{{ cartItem.item.base }}</li>
+                        <li>{{ cartItem.item.type }}</li>
+                        <li>{{ cartItem.item.veg ? 'Veg': 'Non Veg' }}</li>
+                    </ul>
+                    <div class="d-flex justify-content-between border-top pt-3">
+                        <span>Rs. {{ cartItem.item.price }}</span>
+                        <button type="button" class="btn btn-warning"
+                            (click)="removeFromCart(cartItem)">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

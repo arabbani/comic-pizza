@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Pizza } from 'src/app/util/pizza';
 import { CartService } from '../cart.service';
+import { CartItem } from '../model';
 
 @Component({
   selector: 'sb-cart-list',
@@ -10,12 +10,16 @@ import { CartService } from '../cart.service';
 })
 export class CartListComponent implements OnInit {
 
-  cartItems$: Observable<Pizza[]>;
+  cartItems$: Observable<CartItem[]>;
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.cartItems$ = this.cartService.cartItems$;
+  }
+
+  removeFromCart(cartItem: CartItem): void {
+    this.cartService.removeItem(cartItem.item);
   }
 
 }

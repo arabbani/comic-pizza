@@ -59,6 +59,10 @@ $color-border: grey;
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
 
+.btn {
+  padding: .2rem .7rem;
+}
+
 .footer {
   position: fixed;
   left: 0;

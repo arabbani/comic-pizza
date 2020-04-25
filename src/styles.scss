@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
+$hover-color: #677979;
+$active-color: #2b3a3a;
+
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
 
@@ -13,12 +16,12 @@
 
 .switch {
   &:hover {
-    background: black;
-    color: white;
+    background: $hover-color;
+    color: #fff;
   }
 }
 
 .switch-checked {
-  background: black;
-  color: white;
+  background: $active-color;
+  color: #fff;
 }

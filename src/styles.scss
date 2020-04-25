@@ -4,5 +4,21 @@
 @import "~bootstrap/scss/bootstrap";
 
 .btn {
-  padding: .2rem .7rem;
+  padding: 0.2rem 0.7rem;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.switch {
+  &:hover {
+    background: black;
+    color: white;
+  }
+}
+
+.switch-checked {
+  background: black;
+  color: white;
 }

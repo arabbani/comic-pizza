@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CartService } from '../cart.service';
 import { CartItem } from '../model';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'sb-cart-list',
@@ -11,15 +12,21 @@ import { CartItem } from '../model';
 export class CartListComponent implements OnInit {
 
   cartItems$: Observable<CartItem[]>;
+  cartAmount$: Observable<number>;
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
     this.cartItems$ = this.cartService.cartItems$;
+    this.cartAmount$ = this.cartService.cartAmount$;
   }
 
   removeFromCart(cartItem: CartItem): void {
     this.cartService.removeItem(cartItem.item);
+  }
+
+  placeOrder(): void {
+    this.router.navigate(['place-order'])
   }
 
 }

@@ -13,7 +13,7 @@ export enum PizzaType {
 
 export class Pizza {
     constructor(
-        public id: Symbol,
+        public id: number,
         public name: string,
         public price: number,
         public base: PizzaBase,

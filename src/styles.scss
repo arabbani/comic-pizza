@@ -1,100 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
 
-
 // Sass variables
 
 $color-link: yellow;
 $color-border: grey;
 
-
-// CSS Reset
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  // padding: 0;
-  // margin: 0;
-}
-
-// html {
-//     font-size: 62.5%;
+// body {
+//   font-family: Roboto, sans-serif, serif;
 // }
-
-body {
-  // min-height: 100vh;
-  font-family: Roboto, sans-serif, serif;
-  margin: 0;
-}
-
-// input,
-// button,
-// textarea,
-// select {
-//   font: inherit;
-// }
-
-a {
-  text-decoration: none;
-}
-
-ul, ol {
-  list-style: none;
-}
-
-
-
 
 // Component Styles
 
-.main-header {
-    width: 100%;
-    background: red;
-    padding: 1rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+// .main-header {
+//   width: 100%;
+//   background: red;
+//   padding: 1rem 2rem;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
 
-    &__brand {
-      color: green;
-      font-weight: bold;
-    }
+//   &__brand {
+//     color: green;
+//     font-weight: bold;
+//   }
 
-    .main-nav__items {
-      padding: 0;
-      margin: 0;
-      display: flex;
+//   .main-nav__items {
+//     padding: 0;
+//     margin: 0;
+//     display: flex;
 
-      .main-nav__item {
-        margin: 0 1.1rem;
+//     .main-nav__item {
+//       margin: 0 1.1rem;
 
-        a {
-          color: $color-link;
-        }
-      }
-    }
-}
+//       a {
+//         color: $color-link;
+//       }
+//     }
+//   }
+// }
+
+// .main {
+//   padding: 2rem 3rem;
+// }
+
+// .pizza-list {
+//   width: 80vw;
+//   display: flex;
+//   justify-content: center;
+
+//   .pizza-filter {
+//     margin-right: 2rem;
+//     padding: 1rem;
+//     border: 1px solid $color-border;
+//   }
+// }
 
 
-.main {
-  padding: 2rem 3rem;
-}
-
-
-.pizza-list {
-  width: 80vw;
-  display: flex;
-  justify-content: center;
-
-  .pizza-filter {
-    margin-right: 2rem;
-    padding: 1rem;
-    border: 1px solid $color-border;
-  }
-}
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
 
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
 }

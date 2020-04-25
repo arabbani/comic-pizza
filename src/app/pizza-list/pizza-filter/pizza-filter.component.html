@@ -1,3 +1,20 @@
-<section class="pizza-filter">
-    FILTER
-</section>
+<form [formGroup]="pizzaFilterForm">
+    <div class="form-group">
+        <label for="price">
+            Price : <output for="price" class="ml-2">Rs. {{ pizzaFilterForm.value.price }}</output>
+        </label>
+        <input type="range" class="custom-range" id="price" min="100" max="600" formControlName="price">
+    </div>
+    <div class="form-group">
+        <select id="base" class="form-control" formControlName="base">
+            <option value="" hidden selected>Pizza Base</option>
+            <option *ngFor="let base of pizzaBases$ | async">{{ base }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <select id="type" class="form-control" formControlName="type">
+            <option value="" hidden selected>Pizza Type</option>
+            <option *ngFor="let type of pizzaTypes$ | async">{{ type }}</option>
+        </select>
+    </div>
+</form>

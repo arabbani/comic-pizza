@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PizzaService } from 'src/app/util/service/pizza.service';
+import { Observable } from 'rxjs';
+import { Pizza } from 'src/app/util/pizza';
 
 @Component({
   selector: 'sb-filtered-pizza',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilteredPizzaComponent implements OnInit {
 
-  constructor() { }
+  pizzaItems$: Observable<Pizza[]>;
+
+  constructor(private pizzaService: PizzaService) { }
 
   ngOnInit(): void {
+    this.pizzaItems$ = this.pizzaService.filteredPizza$;
   }
 
 }

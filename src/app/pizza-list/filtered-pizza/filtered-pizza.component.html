@@ -1,3 +1,19 @@
-<section class="filtered-pizza">
-    FILTERED
-</section>
+<div class="card" *ngFor="let pizza of pizzaItems$ | async">
+    <div class="card-body">
+        <div>
+            <img [src]="pizza.image">
+        </div>
+        <div>
+            <h5 class="card-title">{{ pizza.name }}</h5>
+            <ul>
+                <li>{{ pizza.base }}</li>
+                <li>{{ pizza.type }}</li>
+                <li>{{ pizza.veg ? 'Veg': 'Non Veg' }}</li>
+            </ul>
+            <div class="d-flex justify-content-between border-top pt-3">
+                <span>Rs. {{ pizza.price }}</span>
+                <button type="button" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </div>
+</div>

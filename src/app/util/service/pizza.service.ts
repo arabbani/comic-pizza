@@ -1,0 +1,22 @@
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { PizzaFilter, pizzaItems } from '../pizza';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PizzaService {
+
+  filteredPizza$ = new BehaviorSubject(pizzaItems);
+
+  constructor() { }
+
+
+  filterPizza(filter: PizzaFilter) {
+    // Filter is not working
+    const filterdPizzaItems = pizzaItems.filter(pizza => {
+      return (filter.price && filter.price === pizza.price) || (filter.base && filter.base === pizza.base) || (filter.type && filter.type === pizza.type) || (filter.veg && filter.veg === pizza.veg);
+    });
+    this.filteredPizza$.next(filterdPizzaItems)
+  }
+}

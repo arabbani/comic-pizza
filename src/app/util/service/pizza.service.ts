@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { PizzaFilter, pizzaItems } from '../pizza';
+import { pizzaItems } from '../constants';
+import { PizzaFilter } from '../enum';
 
 @Injectable({
   providedIn: 'root'

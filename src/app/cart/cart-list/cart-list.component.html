@@ -1,28 +1,36 @@
-<div class="row">
-    <div class="col-10 col-md-8 p-5 mx-auto d-flex justify-content-between border-bottom">
-        <span>Rs. {{ cartAmount$ | async }}</span>
-        <button class="btn btn-success" (click)="placeOrder()">Place Order</button>
-    </div>
-    <div class="col-10 col-md-8 p-5 mx-auto">
-        <div class="card" *ngFor="let cartItem of cartItems$ | async">
-            <div class="card-body d-flex align-items-center">
-                <div class="w-25">
-                    <img src="./assets/images/{{cartItem.item.image}}" class="img-fluid">
-                </div>
-                <div class="flex-fill ml-2">
-                    <h5 class="card-title">{{ cartItem.item.name }}</h5>
-                    <ul>
-                        <li>{{ cartItem.item.base }}</li>
-                        <li>{{ cartItem.item.type }}</li>
-                        <li>{{ cartItem.item.veg ? 'Veg': 'Non Veg' }}</li>
-                    </ul>
-                    <div class="d-flex justify-content-between border-top pt-3">
-                        <span>Rs. {{ cartItem.item.price }}</span>
-                        <button type="button" class="btn btn-warning"
-                            (click)="removeFromCart(cartItem)">Remove</button>
+<div class="row justify-content-center">
+    <ng-container *ngIf="cartItems && cartItems.length > 0; else noItemsFound">
+        <div class="col-10 col-md-8 p-5 mx-auto d-flex justify-content-between border-bottom">
+            <span>Rs. {{ cartAmount$ | async }}</span>
+            <button class="btn btn-success" (click)="placeOrder()">Place Order</button>
+        </div>
+        <div class="col-10 col-md-8 p-5 mx-auto">
+            <div class="card" *ngFor="let cartItem of cartItems">
+                <div class="card-body d-flex align-items-center">
+                    <div class="w-25">
+                        <img src="./assets/images/{{cartItem.item.image}}" class="img-fluid">
+                    </div>
+                    <div class="flex-fill ml-2">
+                        <h5 class="card-title">{{ cartItem.item.name }}</h5>
+                        <ul>
+                            <li>{{ cartItem.item.base }}</li>
+                            <li>{{ cartItem.item.type }}</li>
+                            <li>{{ cartItem.item.veg ? 'Veg': 'Non Veg' }}</li>
+                        </ul>
+                        <div class="d-flex justify-content-between border-top pt-3">
+                            <span>Rs. {{ cartItem.item.price }}</span>
+                            <button type="button" class="btn btn-warning"
+                                (click)="removeFromCart(cartItem)">Remove</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </ng-container>
+    <ng-template #noItemsFound>
+        <div class="col-10 col-md-8 d-flex align-items-center flex-column">
+            <p>Cart is empty!!</p>
+            <button type="button" class="btn btn-primary" routerLink="/">Browse</button>
+        </div>
+    </ng-template>
 </div>

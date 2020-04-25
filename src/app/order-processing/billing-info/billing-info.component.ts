@@ -30,6 +30,7 @@ export class BillingInfoComponent implements OnInit {
   makePayment(): void {
     this.orderProcessingService.makePayment(this.billingInfoForm.value).subscribe(response => {
       if (response) {
+        this.cartService.clearCart();
         this.router.navigate(['../order-success'], {
           relativeTo: this.route
         })

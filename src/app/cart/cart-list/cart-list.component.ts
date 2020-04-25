@@ -11,13 +11,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CartListComponent implements OnInit {
 
-  cartItems$: Observable<CartItem[]>;
+  cartItems: CartItem[];
   cartAmount$: Observable<number>;
 
   constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
-    this.cartItems$ = this.cartService.cartItems$;
+    this.cartService.cartItems$.subscribe(items => this.cartItems = items);
     this.cartAmount$ = this.cartService.cartAmount$;
   }
 

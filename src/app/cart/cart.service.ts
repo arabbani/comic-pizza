@@ -30,6 +30,13 @@ export class CartService {
     this.emitItems();
   }
 
+  clearCart(): void {
+    this.cartItems = [];
+    this.emitItems();
+    this.cartAmount = 0;
+    this.calculateAmount(0);
+  }
+
   isInCart(pizza: Pizza) {
     return this.cartItems.findIndex(cartItem => cartItem.item.id === pizza.id) !== -1;
   }

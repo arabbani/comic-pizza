@@ -25,7 +25,7 @@
                 <label for="contact-number">Contact Number</label>
                 <input type="text" class="form-control" id="contact-number" formControlName="contactNumber">
             </div>
-            <button type="submit" class="btn btn-primary">Next</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!userAddressForm.valid">Next</button>
         </form>
     </div>
 </div>

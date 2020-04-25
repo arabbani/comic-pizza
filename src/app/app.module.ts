@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgxWebstorageModule } from 'ngx-webstorage';
+import { SiteInfoModule } from './site-info/site-info.module';
 
 @NgModule({
   declarations: [
@@ -10,6 +11,7 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
   ],
   imports: [
     BrowserModule,
+    SiteInfoModule,
     AppRoutingModule,
     NgxWebstorageModule.forRoot({
       prefix: 'mypizza',

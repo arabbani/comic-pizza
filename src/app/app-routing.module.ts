@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutUsComponent } from './site-info/about-us/about-us.component';
 
 
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () => import('./pizza-list/pizza-list.module').then(m => m.PizzaListModule)
+    path: 'about-us',
+    component: AboutUsComponent
   },
   {
     path: 'cart',
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: 'place-order',
     loadChildren: () => import('./order-processing/order-processing.module').then(m => m.OrderProcessingModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./pizza-list/pizza-list.module').then(m => m.PizzaListModule)
   }
 ];
 

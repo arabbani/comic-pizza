@@ -12,7 +12,11 @@
             </ul>
             <div class="d-flex justify-content-between border-top pt-3">
                 <span>Rs. {{ pizza.price }}</span>
-                <button type="button" class="btn btn-primary">Add</button>
+                <button *ngIf="!addedToCart(pizza); else onAddedToCart" type="button" class="btn btn-primary"
+                    (click)="addToCart(pizza)">Add</button>
+                <ng-template #onAddedToCart>
+                    <button type="button" class="btn btn-warning" (click)="removeFromCart(pizza)">Remove</button>
+                </ng-template>
             </div>
         </div>
     </div>

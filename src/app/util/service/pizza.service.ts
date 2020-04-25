@@ -13,7 +13,7 @@ export class PizzaService {
   constructor() { }
 
 
-  filterPizza(filter: PizzaFilter) {
+  filterPizza(filter: PizzaFilter): void {
     // Filter is not working
     const filterdPizzaItems = pizzaItems.filter(pizza => {
       return (filter.price && filter.price === pizza.price) || (filter.base && filter.base === pizza.base) || (filter.type && filter.type === pizza.type) || (filter.veg && filter.veg === pizza.veg);

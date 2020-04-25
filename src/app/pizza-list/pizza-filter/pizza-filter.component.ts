@@ -27,7 +27,7 @@ export class PizzaFilterComponent implements OnInit {
     this.initPizzaFilterForm();
   }
 
-  private initPizzaFilterForm() {
+  private initPizzaFilterForm(): void {
     this.pizzaFilterForm = this.formBuilder.group({
       veg: [''],
       price: [100],
@@ -39,11 +39,11 @@ export class PizzaFilterComponent implements OnInit {
     });
   }
 
-  private getPizzaBases() {
+  private getPizzaBases(): void {
     this.pizzaBases$ = this.pizzaBaseService.getPizzaBases();
   }
 
-  private getPizzaTypes() {
+  private getPizzaTypes(): void {
     this.pizzaTypes$ = this.pizzaTypeService.getPizzaTypes();
   }
 

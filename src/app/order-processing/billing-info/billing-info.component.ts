@@ -13,6 +13,7 @@ import { OrderProcessingService } from '../order-processing.service';
 export class BillingInfoComponent implements OnInit {
 
   billingInfoForm: FormGroup;
+  processingPayment = false;
 
   cartAmount$: Observable<number>;
 
@@ -28,12 +29,14 @@ export class BillingInfoComponent implements OnInit {
   }
 
   makePayment(): void {
+    this.processingPayment = true;
     this.orderProcessingService.makePayment(this.billingInfoForm.value).subscribe(response => {
       if (response) {
         this.cartService.clearCart();
+        this.processingPayment = false;
         this.router.navigate(['../order-success'], {
           relativeTo: this.route
-        })
+        });
       }
     });
   }

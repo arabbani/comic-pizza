@@ -18,10 +18,10 @@ export class UserAddressComponent implements OnInit {
     this.userAddressForm = this.formBuilder.group({
       name: ['', Validators.required],
       address: ['', Validators.required],
-      contactNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      contactNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(new RegExp('^[0-9]{10}$'))]],
       city: ['', Validators.required],
       state: ['', Validators.required],
-      pincode: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]]
+      pincode: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6), Validators.pattern(new RegExp('^[0-9]{6}$'))]]
     });
   }
 

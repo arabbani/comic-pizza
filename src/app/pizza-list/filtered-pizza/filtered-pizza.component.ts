@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/cart/cart.service';
-import { Pizza } from 'src/app/util/pizza';
-import { PizzaService } from 'src/app/util/service/pizza.service';
+import { Pizza } from 'src/app/pizza-list/util/pizza';
+import { PizzaService } from 'src/app/pizza-list/service/pizza.service';
 
 @Component({
   selector: 'sb-filtered-pizza',

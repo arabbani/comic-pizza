@@ -1,4 +1,4 @@
-import { Pizza } from '../util/pizza';
+import { Pizza } from '../pizza-list/util/pizza';
 
 export class CartItem {
     constructor(

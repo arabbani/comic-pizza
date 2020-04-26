@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { PizzaFilter } from 'src/app/util/enum';
-import { DishType, PizzaBase, PizzaType } from 'src/app/util/pizza';
-import { PizzaBaseService } from 'src/app/util/service/pizza-base.service';
-import { PizzaTypeService } from 'src/app/util/service/pizza-type.service';
-import { PizzaService } from 'src/app/util/service/pizza.service';
+import { PizzaTypeService } from 'src/app/pizza-list/service/pizza-type.service';
+import { PizzaService } from 'src/app/pizza-list/service/pizza.service';
+import { PizzaFilter } from 'src/app/pizza-list/util/enum';
+import { DishType, PizzaBase, PizzaType } from 'src/app/pizza-list/util/pizza';
+import { PizzaBaseService } from '../service/pizza-base.service';
 
 @Component({
   selector: 'sb-pizza-filter',

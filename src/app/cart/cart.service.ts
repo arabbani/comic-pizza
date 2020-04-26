@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'ngx-webstorage';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Pizza } from '../util/pizza';
+import { Pizza } from '../pizza-list/util/pizza';
 import { CartItem } from './model';
 
 @Injectable({

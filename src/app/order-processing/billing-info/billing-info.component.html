@@ -1,9 +1,10 @@
 <div class="row">
-    <div class="col-10 col-md-8 p-5 mx-auto" *ngIf="!processingPayment; else paymentProcessing">
+    <div class="col-10 col-md-10 p-5 mx-auto" *ngIf="!processingPayment; else paymentProcessing">
         <form [formGroup]="billingInfoForm" (submit)="makePayment()">
             <div class="form-group">
                 <label for="card-number">Card Number</label>
-                <input type="text" class="form-control" id="card-number" formControlName="cardNumber">
+                <input type="text" class="form-control" id="card-number" formControlName="cardNumber" minlength="16"
+                    maxlength="16">
             </div>
             <div class="form-group">
                 <label for="name">Name On Card</label>
@@ -11,9 +12,18 @@
             </div>
             <div class="form-group">
                 <label for="cvv">CVV</label>
-                <input type="text" class="form-control" id="cvv" formControlName="cvv">
+                <input type="text" class="form-control" id="cvv" formControlName="cvv" minlength="3" maxlength="3">
             </div>
-            <div class="d-flex justify-content-between">
+            <div class="form-group row">
+                <label for="expiryMonth" class="col-sm-12 col-md-3 col-form-label">Expiry Date</label>
+                <div class="col-sm-12 col-md-4">
+                    <input type="text" class="form-control" id="expiryMonth" placeholder="Month (eg: 01)" formControlName="expiryMonth" minlength="2" maxlength="2">
+                </div>
+                <div class="col-sm-12 col-md-5">
+                    <input type="text" class="form-control" id="expiryYear" placeholder="Year (eg: 2023)" formControlName="expiryYear" minlength="4" maxlength="4">
+                </div>
+            </div>
+            <div class="d-flex justify-content-between border-top pt-3">
                 <span>Rs. {{ cartAmount$ | async }}</span>
                 <button type="submit" class="btn btn-primary" [disabled]="!billingInfoForm.valid">Pay</button>
             </div>

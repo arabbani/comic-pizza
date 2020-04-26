@@ -22,9 +22,11 @@ export class BillingInfoComponent implements OnInit {
   ngOnInit(): void {
     this.cartAmount$ = this.cartService.cartAmount$;
     this.billingInfoForm = this.formBuilder.group({
-      cardNumber: ['', Validators.required],
+      cardNumber: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
       nameOnCard: ['', Validators.required],
-      cvv: ['', Validators.required]
+      cvv: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
+      expiryMonth: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]],
+      expiryYear: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]]
     });
   }
 

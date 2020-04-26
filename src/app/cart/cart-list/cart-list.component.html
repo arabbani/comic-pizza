@@ -1,6 +1,6 @@
 <div class="row justify-content-center">
     <ng-container *ngIf="cartItems && cartItems.length > 0; else noItemsFound">
-        <div class="col-10 col-md-8 p-5 mx-auto d-flex justify-content-between border-bottom">
+        <div class="col-10 col-md-8 p-4 mx-auto d-flex justify-content-between border-bottom">
             <span>Rs. {{ cartAmount$ | async }}</span>
             <button class="btn btn-success" (click)="placeOrder()">Place Order</button>
         </div>

@@ -17,7 +17,7 @@ export class OrderProcessingService {
   }
 
   makePayment(billingInfo: BillingInfo): Observable<boolean> {
-    let userBillingInfo = new BillingInfo(billingInfo.cardNumber, billingInfo.nameOnCard, billingInfo.cvv);
+    let userBillingInfo = new BillingInfo(billingInfo.cardNumber, billingInfo.nameOnCard, billingInfo.cvv, billingInfo.expiryMonth, billingInfo.expiryYear);
     this.checkoutInfo.billinInfo = userBillingInfo;
     return of(true).pipe(delay(1000));
   }

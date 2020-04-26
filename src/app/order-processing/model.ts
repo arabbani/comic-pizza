@@ -2,7 +2,9 @@ export class BillingInfo {
     constructor(
         public cardNumber: number,
         public nameOnCard: string,
-        public cvv: number
+        public cvv: number,
+        public expiryMonth: number,
+        public expiryYear: number
     ) { }
 }
 

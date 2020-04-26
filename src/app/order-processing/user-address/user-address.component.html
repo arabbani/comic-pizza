@@ -4,6 +4,15 @@
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" formControlName="name">
+                <div class="error-message mt-2"
+                    *ngIf="userAddressForm.get('name').invalid && (userAddressForm.get('name').touched || userAddressForm.get('name').dirty)">
+                    <ng-container *ngIf="userAddressForm.get('name').errors.pattern; else invalidName">
+                        Name must consists characters only
+                    </ng-container>
+                    <ng-template #invalidName>
+                        Please enter a valid name
+                    </ng-template>
+                </div>
             </div>
             <div class="form-group">
                 <label for="address">Address</label>
@@ -12,21 +21,58 @@
             <div class="form-group">
                 <label for="state">State</label>
                 <input type="text" class="form-control" id="state" formControlName="state">
+                <div class="error-message mt-2"
+                    *ngIf="userAddressForm.get('state').invalid && (userAddressForm.get('state').touched || userAddressForm.get('state').dirty)">
+                    <ng-container *ngIf="userAddressForm.get('state').errors.pattern; else invalidState">
+                        State must consists characters only
+                    </ng-container>
+                    <ng-template #invalidState>
+                        Please enter a valid state
+                    </ng-template>
+                </div>
             </div>
             <div class="form-group">
                 <label for="city">City</label>
                 <input type="text" class="form-control" id="city" formControlName="city">
+                <div class="error-message mt-2"
+                    *ngIf="userAddressForm.get('city').invalid && (userAddressForm.get('city').touched || userAddressForm.get('city').dirty)">
+                    <ng-container *ngIf="userAddressForm.get('city').errors.pattern; else invalidCity">
+                        City must consists characters only
+                    </ng-container>
+                    <ng-template #invalidCity>
+                        Please enter a valid city
+                    </ng-template>
+                </div>
             </div>
             <div class="form-group">
                 <label for="pincode">Pincode</label>
-                <input type="text" class="form-control" id="pincode" formControlName="pincode" minlength="6" maxlength="6">
+                <input type="text" class="form-control" id="pincode" formControlName="pincode" minlength="6"
+                    maxlength="6">
+                <div class="error-message mt-2"
+                    *ngIf="userAddressForm.get('pincode').invalid && (userAddressForm.get('pincode').touched || userAddressForm.get('pincode').dirty)">
+                    <ng-container
+                        *ngIf="userAddressForm.get('pincode').errors.minlength || userAddressForm.get('pincode').errors.maxlength; else invalidPincode">
+                        Pincode must consists 6 digits
+                    </ng-container>
+                    <ng-template #invalidPincode>
+                        Please enter a valid pincode
+                    </ng-template>
+                </div>
             </div>
             <div class="form-group">
                 <label for="contact-number">Contact Number</label>
-                <input type="text" class="form-control" id="contact-number" formControlName="contactNumber" minlength="10" maxlength="10">
-                <div class="error-message mt-2" *ngIf="userAddressForm.get('contactNumber').invalid && (userAddressForm.get('contactNumber').touched || userAddressForm.get('contactNumber').dirty)">
-                    <span *ngIf="userAddressForm.get('contactNumber').errors.pattern">Contact number can consists only numbers</span>
-                  </div>
+                <input type="text" class="form-control" id="contact-number" formControlName="contactNumber"
+                    minlength="10" maxlength="10">
+                <div class="error-message mt-2"
+                    *ngIf="userAddressForm.get('contactNumber').invalid && (userAddressForm.get('contactNumber').touched || userAddressForm.get('contactNumber').dirty)">
+                    <ng-container
+                        *ngIf="userAddressForm.get('contactNumber').errors.minlength || userAddressForm.get('contactNumber').errors.maxlength; else invalidContact">
+                        Contact number must consists 10 digits
+                    </ng-container>
+                    <ng-template #invalidContact>
+                        Please enter a valid contact number
+                    </ng-template>
+                </div>
             </div>
             <button type="submit" class="btn btn-primary" [disabled]="!userAddressForm.valid">Next</button>
         </form>

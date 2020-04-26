@@ -23,7 +23,7 @@ export class BillingInfoComponent implements OnInit {
     this.cartAmount$ = this.cartService.cartAmount$;
     this.billingInfoForm = this.formBuilder.group({
       cardNumber: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern(new RegExp('^[0-9]{16}$'))]],
-      nameOnCard: ['', Validators.required],
+      nameOnCard: ['', [Validators.required, Validators.pattern(new RegExp('^[A-Za-z ]*$'))]],
       cvv: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3), Validators.pattern(new RegExp('^[0-9]{3}$'))]],
       expiryMonth: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(2), Validators.pattern(new RegExp('^[0-9]{2}$'))]],
       expiryYear: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4), Validators.pattern(new RegExp('^[0-9]{4}$'))]]

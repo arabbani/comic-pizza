@@ -16,11 +16,11 @@ export class UserAddressComponent implements OnInit {
 
   ngOnInit(): void {
     this.userAddressForm = this.formBuilder.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.pattern(new RegExp('^[A-Za-z ]*$'))]],
       address: ['', Validators.required],
-      contactNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(new RegExp('^[0-9]$'))]],
-      city: ['', Validators.required],
-      state: ['', Validators.required],
+      contactNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(new RegExp('^[0-9]{10}$'))]],
+      city: ['', [Validators.required, Validators.pattern(new RegExp('^[A-Za-z ]*$'))]],
+      state: ['', [Validators.required, Validators.pattern(new RegExp('^[A-Za-z ]*$'))]],
       pincode: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6), Validators.pattern(new RegExp('^[0-9]{6}$'))]]
     });
   }

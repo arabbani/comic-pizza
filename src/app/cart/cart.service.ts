@@ -3,6 +3,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Pizza } from '../pizza-list/util/pizza';
 import { CartItem } from './model';
+import { ToastService } from '../shared/toast.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,18 +17,20 @@ export class CartService {
   cartItems$ = new BehaviorSubject<CartItem[]>([]);
   cartAmount$ = new BehaviorSubject<number>(this.cartAmount);
 
-  constructor(private localStorage: LocalStorageService) { }
+  constructor(private localStorage: LocalStorageService, private toastService: ToastService) { }
 
   addItem(pizza: Pizza): void {
     this.cartItems.push(new CartItem(pizza, 1));
     this.calculateAmount(pizza.price);
     this.emitItems();
+    this.toastService.show(`${pizza.name} added to cart.`, { classname: 'bg-success text-light', delay: 3000 });
   }
 
   removeItem(pizza: Pizza): void {
     this.cartItems = this.cartItems.filter(cartItem => pizza.id !== cartItem.item.id);
     this.calculateAmount(-pizza.price);
     this.emitItems();
+    this.toastService.show(`${pizza.name} removed from cart.`, { classname: 'bg-danger text-light', delay: 3000 });
   }
 
   clearCart(): void {

@@ -48,8 +48,10 @@ export class PizzaFilterComponent implements OnInit {
     this.pizzaTypes$ = this.pizzaTypeService.getPizzaTypes();
   }
 
-  isChecked(dishType): boolean {
-    return this.pizzaFilterForm.value.dishType === dishType;
+  selectDishType(dishType: DishType) {
+    this.pizzaFilterForm.patchValue({
+      dishType: dishType
+    });
   }
 
 }

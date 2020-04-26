@@ -6,8 +6,6 @@ import { PizzaFilterComponent } from './pizza-filter/pizza-filter.component';
 import { PizzaListRoutingModule } from './pizza-list-routing.module';
 import { PizzaListComponent } from './pizza-list/pizza-list.component';
 
-
-
 @NgModule({
   declarations: [PizzaListComponent, PizzaFilterComponent, FilteredPizzaComponent],
   imports: [

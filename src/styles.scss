@@ -9,19 +9,3 @@ $active-color: #2b3a3a;
 .btn {
   padding: 0.2rem 0.7rem;
 }
-
-.cursor-pointer {
-  cursor: pointer !important;
-}
-
-.switch {
-  &:hover {
-    background: $hover-color;
-    color: #fff;
-  }
-}
-
-.switch-checked {
-  background: $active-color;
-  color: #fff;
-}

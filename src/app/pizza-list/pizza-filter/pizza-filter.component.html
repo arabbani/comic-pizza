@@ -1,11 +1,9 @@
 <form [formGroup]="pizzaFilterForm">
-    <div class="form-check form-check-inline border px-2 py-2 m-0 mb-2 cursor-pointer switch w-50 text-center"
-        [class.switch-checked]="isChecked(dishType)" *ngFor="let dishType of dishTypes">
-        <label class="form-check-label cursor-pointer" [for]="dishType">
-            {{ dishType }}
-            <input class="form-check-input" type="radio" name="dishType" [id]="dishType" [value]="dishType"
-                formControlName="dishType" hidden>
-        </label>
+    <div class="d-flex justify-content-center">
+        <div class="btn-group mb-2" role="group">
+            <button type="button" class="btn btn-secondary px-3 py-2" *ngFor="let dishType of dishTypes"
+                (click)="selectDishType(dishType)">{{ dishType }}</button>
+        </div>
     </div>
     <div class="form-group">
         <label for="price">

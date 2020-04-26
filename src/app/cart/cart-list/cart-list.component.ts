@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CartService } from '../cart.service';
 import { CartItem } from '../model';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'sb-cart-list',
@@ -27,6 +27,14 @@ export class CartListComponent implements OnInit {
 
   placeOrder(): void {
     this.router.navigate(['place-order'])
+  }
+
+  increaseByOne(cartItem: CartItem): void {
+    this.cartService.increaseByOne(cartItem);
+  }
+
+  decreaseByOne(cartItem: CartItem): void {
+    this.cartService.decreaseByOne(cartItem);
   }
 
 }

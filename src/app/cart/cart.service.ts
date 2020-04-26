@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'ngx-webstorage';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Pizza } from '../pizza-list/util/pizza';
-import { CartItem } from './model';
 import { ToastService } from '../shared/toast.service';
+import { CartItem } from './model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +27,15 @@ export class CartService {
   }
 
   removeItem(pizza: Pizza): void {
-    this.cartItems = this.cartItems.filter(cartItem => pizza.id !== cartItem.item.id);
-    this.calculateAmount(-pizza.price);
+    let quantity = 1;
+    this.cartItems = this.cartItems.filter(cartItem => {
+      if (pizza.id === cartItem.item.id) {
+        quantity = cartItem.quantity;
+        return false;
+      }
+      return true;
+    });
+    this.calculateAmount(-pizza.price * quantity);
     this.emitItems();
     this.toastService.show(`${pizza.name} removed from cart.`, { classname: 'bg-danger text-light', delay: 3000 });
   }
@@ -38,6 +45,39 @@ export class CartService {
     this.emitItems();
     this.cartAmount = 0;
     this.calculateAmount(0);
+  }
+
+  increaseByOne(cartItem: CartItem): void {
+    let price = 0;
+    this.cartItems.forEach(element => {
+      if (element.item.id === cartItem.item.id) {
+        element.quantity++;
+        price = element.item.price;
+      }
+    });
+    this.emitItems();
+    this.calculateAmount(price);
+  }
+
+  decreaseByOne(cartItem: CartItem): void {
+    let price = 0;
+    let index = 0;
+    let remove = false;
+    this.cartItems.forEach((element, i) => {
+      if (element.item.id === cartItem.item.id) {
+        element.quantity--;
+        price = element.item.price;
+        if (element.quantity === 0) {
+          remove = true;
+          index = i;
+        }
+      }
+    });
+    if (remove) {
+      this.cartItems.splice(index, 1);
+    }
+    this.emitItems();
+    this.calculateAmount(-price);
   }
 
   isInCart(pizza: Pizza) {

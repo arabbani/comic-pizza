@@ -24,6 +24,9 @@
             <div class="form-group">
                 <label for="contact-number">Contact Number</label>
                 <input type="text" class="form-control" id="contact-number" formControlName="contactNumber" minlength="10" maxlength="10">
+                <div class="error-message mt-2" *ngIf="userAddressForm.get('contactNumber').invalid && (userAddressForm.get('contactNumber').touched || userAddressForm.get('contactNumber').dirty)">
+                    <span *ngIf="userAddressForm.get('contactNumber').errors.pattern">Contact number can consists only numbers</span>
+                  </div>
             </div>
             <button type="submit" class="btn btn-primary" [disabled]="!userAddressForm.valid">Next</button>
         </form>

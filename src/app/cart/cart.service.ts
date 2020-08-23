@@ -23,7 +23,7 @@ export class CartService {
     this.cartItems.push(new CartItem(pizza, 1));
     this.calculateAmount(pizza.price);
     this.emitItems();
-    this.toastService.show(`${pizza.name} added to cart.`, { classname: 'bg-success text-light', delay: 10000 });
+    this.toastService.show(`${pizza.name} added to cart.`, { classname: 'bg-success text-light', delay: 2000 });
   }
 
   removeItem(pizza: Pizza): void {
@@ -37,7 +37,7 @@ export class CartService {
     });
     this.calculateAmount(-pizza.price * quantity);
     this.emitItems();
-    this.toastService.show(`${pizza.name} removed from cart.`, { classname: 'bg-danger text-light', delay: 10000 });
+    this.toastService.show(`${pizza.name} removed from cart.`, { classname: 'bg-danger text-light', delay: 2000 });
   }
 
   clearCart(): void {

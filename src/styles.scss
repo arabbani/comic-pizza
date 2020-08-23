@@ -1,19 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
 
-$hover-color: #677979;
-$active-color: #2b3a3a;
+$theme-colors: (
+  "primary": #212529,
+  "secondary": #343a40,
+  "success": #495057,
+  "light": #343a40,
+  "danger": #ff4136,
+  "warning": #adb5bd,
+);
 
+$body-bg: #495057;
+$body-color: #ced4da;
+$border-color: #adb5bd;
+
+// $hover-color: #677979;
+// $active-color: #343a40;
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
+
+.card {
+  background-color: #343a40;
+}
+
+.form-control {
+  background-color: #343a40;
+  border: none;
+  color: #ced4da;
+
+  &:focus {
+    background-color: #343a40;
+    border: none;
+    color: #ced4da;
+  }
+
+  option {
+    background-color: #343a40;
+    color: #ced4da;
+    border: none;
+  }
+}
 
 .btn {
   padding: 0.2rem 0.7rem;
 }
 
-.ng-invalid:not(form)  {
-  border-left: 5px solid #a94442;
+.ng-invalid:not(form) {
+  border-left: 2px solid #d90429;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .error-message {
-  color: red;
+  color: #dee2e6;
 }

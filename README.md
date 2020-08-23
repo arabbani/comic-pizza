@@ -2,25 +2,29 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
 
+## Prerequisite
+
+You need to have nodejs installed on your machine. Download nodejs from `https://nodejs.org/en/`.
+
+Also install Angular CLI using npm.
+
+```shell
+npm i -g @angular/cli
+```
+
+## Features
+  - The homepage displays all the available pizzas to order
+  - The pizza can be filtered by price, type, base etc. For this to work an some filter controls are provided at the lest side of the page.
+  - Clicking on add button will add the item to the cart.
+  - The cart page shows all the items in the cart. From there you can proceed to pay and order the items.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
 

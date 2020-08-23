@@ -1,89 +1,91 @@
 <div class="row">
-    <div class="col-10 col-md-10 p-5 mx-auto" *ngIf="!processingPayment; else paymentProcessing">
-        <form [formGroup]="billingInfoForm" (submit)="makePayment()">
-            <div class="form-group">
-                <label for="card-number">Card Number</label>
-                <input type="text" class="form-control" id="card-number" formControlName="cardNumber" minlength="16"
-                    maxlength="16">
-                <div class="error-message mt-2"
-                    *ngIf="billingInfoForm.get('cardNumber').invalid && (billingInfoForm.get('cardNumber').touched || billingInfoForm.get('cardNumber').dirty)">
-                    <ng-container
-                        *ngIf="billingInfoForm.get('cardNumber').errors.minlength || billingInfoForm.get('cardNumber').errors.maxlength; else invalidCardNumber">
-                        Card number must consists 16 digits
-                    </ng-container>
-                    <ng-template #invalidCardNumber>
-                        Please enter a valid card number
-                    </ng-template>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="name">Name On Card</label>
-                <input type="text" class="form-control" id="name" formControlName="nameOnCard">
-                <div class="error-message mt-2"
-                    *ngIf="billingInfoForm.get('nameOnCard').invalid && (billingInfoForm.get('nameOnCard').touched || billingInfoForm.get('nameOnCard').dirty)">
-                    <ng-container *ngIf="billingInfoForm.get('nameOnCard').errors.pattern; else invalidName">
-                        Name must consists characters only
-                    </ng-container>
-                    <ng-template #invalidName>
-                        Please enter a valid name
-                    </ng-template>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="cvv">CVV</label>
-                <input type="text" class="form-control" id="cvv" formControlName="cvv" minlength="3" maxlength="3">
-                <div class="error-message mt-2"
-                    *ngIf="billingInfoForm.get('cvv').invalid && (billingInfoForm.get('cvv').touched || billingInfoForm.get('cvv').dirty)">
-                    <ng-container
-                        *ngIf="billingInfoForm.get('cvv').errors.minlength || billingInfoForm.get('cvv').errors.maxlength; else invalidCVV">
-                        CVV must consists 3 digits
-                    </ng-container>
-                    <ng-template #invalidCVV>
-                        Please enter a valid cvv number
-                    </ng-template>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="expiryMonth" class="col-sm-12 col-md-3 col-form-label">Expiry Date</label>
-                <div class="col-sm-12 col-md-4">
-                    <input type="text" class="form-control" id="expiryMonth" placeholder="Month (eg: 01)"
-                        formControlName="expiryMonth" minlength="2" maxlength="2">
-                    <div class="error-message mt-2"
-                        *ngIf="billingInfoForm.get('expiryMonth').invalid && (billingInfoForm.get('expiryMonth').touched || billingInfoForm.get('expiryMonth').dirty)">
-                        <ng-container
-                            *ngIf="billingInfoForm.get('expiryMonth').errors.minlength || billingInfoForm.get('expiryMonth').errors.maxlength; else invalidMonth">
-                            Expiry month must consists 2 digits
-                        </ng-container>
-                        <ng-template #invalidMonth>
-                            Please enter a valid month
-                        </ng-template>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-5">
-                    <input type="text" class="form-control" id="expiryYear" placeholder="Year (eg: 2023)"
-                        formControlName="expiryYear" minlength="4" maxlength="4">
-                    <div class="error-message mt-2"
-                        *ngIf="billingInfoForm.get('expiryYear').invalid && (billingInfoForm.get('expiryYear').touched || billingInfoForm.get('expiryYear').dirty)">
-                        <ng-container
-                            *ngIf="billingInfoForm.get('expiryYear').errors.minlength || billingInfoForm.get('expiryYear').errors.maxlength; else invalidYear">
-                            Expiry year must consists 4 digits
-                        </ng-container>
-                        <ng-template #invalidYear>
-                            Please enter a valid year
-                        </ng-template>
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex justify-content-between border-top pt-3">
-                <span>Rs. {{ cartAmount$ | async }}</span>
-                <button type="submit" class="btn btn-primary" [disabled]="!billingInfoForm.valid">Pay</button>
-            </div>
-        </form>
-    </div>
-    <ng-template #paymentProcessing>
-        <div class="col-10 col-md-8 p-5 mx-auto d-flex justify-content-center">
-            <div class="spinner-border text-success">
-            </div>
+  <div class="col-10 col-md-4 p-5 mx-auto" *ngIf="!processingPayment; else paymentProcessing">
+    <form [formGroup]="billingInfoForm" (submit)="makePayment()">
+      <div class="form-group">
+        <label for="card-number">Card Number</label>
+        <input type="text" class="form-control" id="card-number" formControlName="cardNumber" minlength="16"
+          maxlength="16">
+        <div class="error-message mt-2"
+          *ngIf="billingInfoForm.get('cardNumber').invalid && (billingInfoForm.get('cardNumber').touched || billingInfoForm.get('cardNumber').dirty)">
+          <ng-container
+            *ngIf="billingInfoForm.get('cardNumber').errors.minlength || billingInfoForm.get('cardNumber').errors.maxlength; else invalidCardNumber">
+            Card number must consists 16 digits
+          </ng-container>
+          <ng-template #invalidCardNumber>
+            Please enter a valid card number
+          </ng-template>
         </div>
-    </ng-template>
+      </div>
+      <div class="form-group">
+        <label for="name">Name On Card</label>
+        <input type="text" class="form-control" id="name" formControlName="nameOnCard">
+        <div class="error-message mt-2"
+          *ngIf="billingInfoForm.get('nameOnCard').invalid && (billingInfoForm.get('nameOnCard').touched || billingInfoForm.get('nameOnCard').dirty)">
+          <ng-container *ngIf="billingInfoForm.get('nameOnCard').errors.pattern; else invalidName">
+            Name must consists characters only
+          </ng-container>
+          <ng-template #invalidName>
+            Please enter a valid name
+          </ng-template>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cvv">CVV</label>
+        <input type="text" class="form-control" id="cvv" formControlName="cvv" minlength="3" maxlength="3">
+        <div class="error-message mt-2"
+          *ngIf="billingInfoForm.get('cvv').invalid && (billingInfoForm.get('cvv').touched || billingInfoForm.get('cvv').dirty)">
+          <ng-container
+            *ngIf="billingInfoForm.get('cvv').errors.minlength || billingInfoForm.get('cvv').errors.maxlength; else invalidCVV">
+            CVV must consists 3 digits
+          </ng-container>
+          <ng-template #invalidCVV>
+            Please enter a valid cvv number
+          </ng-template>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="expiryMonth" class="col-form-label">Expiry Date</label>
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <input type="text" class="form-control" id="expiryMonth" placeholder="Month (eg: 01)"
+              formControlName="expiryMonth" minlength="2" maxlength="2">
+            <div class="error-message mt-2"
+              *ngIf="billingInfoForm.get('expiryMonth').invalid && (billingInfoForm.get('expiryMonth').touched || billingInfoForm.get('expiryMonth').dirty)">
+              <ng-container
+                *ngIf="billingInfoForm.get('expiryMonth').errors.minlength || billingInfoForm.get('expiryMonth').errors.maxlength; else invalidMonth">
+                Expiry month must consists 2 digits
+              </ng-container>
+              <ng-template #invalidMonth>
+                Please enter a valid month
+              </ng-template>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <input type="text" class="form-control" id="expiryYear" placeholder="Year (eg: 2023)"
+              formControlName="expiryYear" minlength="4" maxlength="4">
+            <div class="error-message mt-2"
+              *ngIf="billingInfoForm.get('expiryYear').invalid && (billingInfoForm.get('expiryYear').touched || billingInfoForm.get('expiryYear').dirty)">
+              <ng-container
+                *ngIf="billingInfoForm.get('expiryYear').errors.minlength || billingInfoForm.get('expiryYear').errors.maxlength; else invalidYear">
+                Expiry year must consists 4 digits
+              </ng-container>
+              <ng-template #invalidYear>
+                Please enter a valid year
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between border-top pt-3">
+        <span>Rs. {{ cartAmount$ | async }}</span>
+        <button type="submit" class="btn btn-primary" [disabled]="!billingInfoForm.valid">Pay</button>
+      </div>
+    </form>
+  </div>
+  <ng-template #paymentProcessing>
+    <div class="col-10 col-md-8 p-5 mx-auto d-flex justify-content-center">
+      <div class="spinner-border text-success">
+      </div>
+    </div>
+  </ng-template>
 </div>
